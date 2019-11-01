@@ -3,11 +3,11 @@ import React from 'react';
 import WeatherCondition from './WeatherCondition';
 import WeatherForecast from './WeatherForecast';
 
-function Main() {
+function Main(props) {
     return (
         <main>
             <WeatherCondition />
-            <WeatherForecast />
+            <WeatherForecast forecasts={props.forecasts}/>
         </main>
     );
 }
