@@ -1,39 +1,38 @@
 import React from 'react';
+import axios from 'axios';
+import { format } from 'date-fns';
 import ForecastRow from './ForecastRow';
 
 class WeatherForecast extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            forecasts: [
-                {
-                    day: "Fri",
-                    high: "19 c",
-                    low: "8 c",
-                    time: "10:00"
-                },
-                {
-                    day: "Sat",
-                    high: "19 c",
-                    low: "8 c",
-                    time: "10:00"
-                },
-                {
-                    day: "Sun",
-                    high: "19 c",
-                    low: "8 c",
-                    time: "10:00"
-                },
-                {
-                    day: "Mon",
-                    high: "19 c",
-                    low: "8 c",
-                    time: "10:00"
-                }
-            ]
-
+            forecasts: []
         };
     }
+
+    componentDidMount() {
+        //fetch data
+        axios.get('https://jr-weather-api.herokuapp.com/api/weather?cc=au&city=brisbane')
+            .then(response => {
+                const forecasts = response.data.data.forecast.slice(0, 10).map(forecast => {
+                    const date = new Date(forecast.time * 1000);
+                    const day = format(date, 'EEE');
+                    const time = format(date, 'HH:mm');
+                    return {
+                        day,
+                        time,
+                        high: forecast.maxCelsius,
+                        low: forecast.minCelsius
+                    };
+
+
+                });
+                this.setState({ forecasts })
+
+            });
+    }
+
     render() {
         return (
             <section className="weather-forecast">

@@ -11,14 +11,14 @@ function WeatherCondition(){
           <div className="weather-condition__temp">19 c</div>
           <div className="weather-condition__desc">
             <div>
-              <img src={umbrella} />
+              <img src={umbrella} alt='umbrella'/>
               <span className="citem">20%</span>
             </div>
             <div>
-              <img src={wind} /> <span className="citem">3 km/h</span>
+              <img src={wind} alt='wind'/> <span className="citem">3 km/h</span>
             </div>
             <div>
-              <img src={compass} /> <span className="citem">NE</span>
+              <img src={compass} alt='compass'/> <span className="citem">NE</span>
             </div>
           </div>
         </section>
