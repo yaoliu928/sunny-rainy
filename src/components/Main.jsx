@@ -6,8 +6,15 @@ import WeatherForecast from './WeatherForecast';
 function Main(props) {
     return (
         <main>
-            <WeatherCondition />
-            <WeatherForecast forecasts={props.forecasts}/>
+            <WeatherCondition 
+            cityName={props.cityName}
+            current={props.current}
+            />
+            <WeatherForecast 
+            forecasts={props.forecasts}
+            changeLimit={props.changeLimit}
+            limit={props.limit}
+            />
         </main>
     );
 }

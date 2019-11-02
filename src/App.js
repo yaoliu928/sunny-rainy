@@ -15,6 +15,8 @@ class App extends React.Component {
     this.state = {
       forecasts: [],
       limit: 5,
+      cityName: '',
+      current: {}
     };
   }
 
@@ -22,7 +24,11 @@ class App extends React.Component {
     //fetch data
     axios.get('https://jr-weather-api.herokuapp.com/api/weather?cc=au&city=brisbane')
       .then(response => {
-        const forecasts = response.data.data.forecast.slice(0, 10).map(forecast => {
+        console.log(response);
+        const data = response.data.data;
+        const cityName = data.city.name;
+        const current = data.current;
+        const forecasts = data.forecast.slice(0, 10).map(forecast => {
           const date = new Date(forecast.time * 1000);
           const day = format(date, 'EEE');
           const time = format(date, 'HH:mm');
@@ -33,15 +39,26 @@ class App extends React.Component {
             low: forecast.minCelsius
           };
         });
-        this.setState({ forecasts })
+        this.setState({ cityName, current, forecasts });
       });
   }
+
+  changeLimit = (limit) => {
+    this.setState({ limit });
+  }
+
   render() {
     return (
       <div className="weather-channel__container">
         <Header />
         <Nav />
-        <Main forecasts={this.state.forecasts.slice(0,this.state.limit)} />
+        <Main
+          cityName={this.state.cityName}
+          current={this.state.current}
+          forecasts={this.state.forecasts.slice(0, this.state.limit)}
+          changeLimit={this.changeLimit}
+          limit={this.state.limit}
+        />
         <Footer />
       </div>
     );
