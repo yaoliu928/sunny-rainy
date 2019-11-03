@@ -185,13 +185,12 @@ button.forecast__switch_1 {
 .weather-forecast__icon img {
 	width: 25px;
 }
-.weather-forecast__high {
-	color: #ffffff;
-}
+
 .weather-forecast__high,
 .weather-forecast__low {
 	flex: 0.3;
 	text-align: right;
+	color: #ffffff;
 }
 
 .weather-channel__footer {

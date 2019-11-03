@@ -16,7 +16,8 @@ class App extends React.Component {
       forecasts: [],
       limit: 5,
       cityName: '',
-      current: {}
+      current: {},
+      input:''
     };
   }
 
@@ -47,11 +48,15 @@ class App extends React.Component {
     this.setState({ limit });
   }
 
+  handleInputChange=(event)=>{
+    this.setState({input:event.target.value})
+  }
+
   render() {
     return (
       <div className="weather-channel__container">
         <Header />
-        <Nav />
+        <Nav handleInputChange={(this.handleInputChange)} />
         <Main
           cityName={this.state.cityName}
           current={this.state.current}

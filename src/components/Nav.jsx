@@ -1,9 +1,9 @@
 import React from 'react';
-function Nav() {
+function Nav(props) {
     return (
         <nav>
             <div >
-                <input className="search-input" />
+                <input className="search-input" onChange={(props.handleInputChange)}/>
                 <button className="search-btn"><i className="fa fa-search"></i></button>
 
                 <button className="temp-switch">
