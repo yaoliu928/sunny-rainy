@@ -79,6 +79,7 @@ toggleUnit =() => {
           forecasts={this.state.forecasts.slice(0, this.state.limit)}
           changeLimit={this.changeLimit}
           limit={this.state.limit}
+          unit={this.state.unit}
         />
         <Footer />
       </div>
