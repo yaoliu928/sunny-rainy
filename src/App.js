@@ -28,7 +28,8 @@ class App extends React.Component {
   }
 
 toggleUnit =() => {
-  this.setState(state => ({unit:state.unit === '℃' ? '℉':'℃'}));
+  const unit = this.state.unit === '℃' ? '℉':'℃';
+  this.setState({unit});
 }
 
   updateWeather = response => {
@@ -43,8 +44,8 @@ toggleUnit =() => {
       return {
         day,
         time,
-        high: forecast.maxCelsius,
-        low: forecast.minCelsius
+        high: this.state.unit === '℃' ? forecast.maxCelsius : forecast.maxFahrenheit,
+        low: this.state.unit === '℃' ? forecast.minCelsius : forecast.minFahrenheit
       };
     });
     this.setState({ cityName, current, forecasts });

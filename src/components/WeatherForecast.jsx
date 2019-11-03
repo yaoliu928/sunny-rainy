@@ -4,16 +4,17 @@ import ForecastRow from './ForecastRow';
 class WeatherForecast extends React.Component {
 
     render() {
+        const {limit} = this.props;
         return (
             <section className="weather-forecast">
                 <div className="forecast__switch">
                     <button
-                        className={`forecast__switch_0 ${this.props.limit === 5?'switch-active' : ''}`}
+                        className={`forecast__switch_0 ${limit === 5?'switch-active' : ''}`}
                         onClick={() => this.props.changeLimit(5)}
                     >
                         5 items
                     </button>
-                    <button className={`forecast__switch_1 ${this.props.limit === 10?'switch-active' : ''}`}
+                    <button className={`forecast__switch_1 ${limit === 10?'switch-active' : ''}`}
                         onClick={() => this.props.changeLimit(10)}
                     >
                         10 items
