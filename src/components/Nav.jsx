@@ -3,7 +3,11 @@ function Nav(props) {
     return (
         <nav>
             <div >
-                <input className="search-input" onChange={(props.handleInputChange)}/>
+                <input 
+                value={props.inputValue} 
+                className="search-input" 
+                onChange={(props.handleInputChange)}
+                />
                 <button className="search-btn"><i className="fa fa-search"></i></button>
 
                 <button className="temp-switch">

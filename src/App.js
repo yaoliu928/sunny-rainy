@@ -49,14 +49,16 @@ class App extends React.Component {
   }
 
   handleInputChange=(event)=>{
-    this.setState({input:event.target.value})
+    this.setState({input:event.target.value});
   }
 
   render() {
     return (
       <div className="weather-channel__container">
         <Header />
-        <Nav handleInputChange={(this.handleInputChange)} />
+        <Nav inputValue={this.state.input} 
+        handleInputChange={(this.handleInputChange)} 
+        />
         <Main
           cityName={this.state.cityName}
           current={this.state.current}
