@@ -37,6 +37,7 @@ toggleUnit =() => {
     const data = response.data.data;
     const cityName = data.city.name;
     const current = data.current;
+    const unit = this.state.unit;
     const forecasts = data.forecast.slice(0, 10).map(forecast => {
       const date = new Date(forecast.time * 1000);
       const day = format(date, 'EEE');
@@ -44,8 +45,8 @@ toggleUnit =() => {
       return {
         day,
         time,
-        high: this.state.unit === '℃' ? forecast.maxCelsius : forecast.maxFahrenheit,
-        low: this.state.unit === '℃' ? forecast.minCelsius : forecast.minFahrenheit
+        high: unit === '℃' ? forecast.maxCelsius : forecast.maxFahrenheit,
+        low: unit === '℃' ? forecast.minCelsius : forecast.minFahrenheit
       };
     });
     this.setState({ cityName, current, forecasts });

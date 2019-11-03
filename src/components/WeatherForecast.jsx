@@ -27,6 +27,7 @@ class WeatherForecast extends React.Component {
                         high={forecast.high}
                         low={forecast.low}
                         time={forecast.time}
+                        unit={this.props.unit}
                        
                     />
                 ))}
