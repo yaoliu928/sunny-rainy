@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      unit:'℃',
       forecasts: [],
       limit: 5,
       cityName: '',
@@ -25,6 +26,10 @@ class App extends React.Component {
     getWeatherFor('brisbane')  
     .then(this.updateWeather);
   }
+
+toggleUnit =() => {
+  this.setState(state => ({unit:state.unit === '℃' ? '℉':'℃'}));
+}
 
   updateWeather = response => {
     console.log(response);
@@ -65,6 +70,8 @@ class App extends React.Component {
         <Nav inputValue={this.state.input} 
         handleInputChange={this.handleInputChange} 
         handleSearch={this.handleSearch}
+        toggleUnit={this.toggleUnit}
+        unit={this.state.unit}
         />
         <Main
           cityName={this.state.cityName}

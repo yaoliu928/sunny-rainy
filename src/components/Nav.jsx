@@ -8,17 +8,18 @@ function Nav(props) {
                 className="search-input" 
                 onChange={props.handleInputChange}
                 placeholder="AU cityname"
-
                 />
                 <button onClick={props.handleSearch}
                 className="search-btn"><i className="fa fa-search"></i></button>
 
-                <button className="temp-switch">
+                <button onClick={props.toggleUnit} className="temp-switch">
                     <i
                         className="fa fa-thermometer-empty"
                         aria-hidden="true"
                     ></i>
-                    <sup>&deg;</sup>C
+                    {//<sup>&deg;</sup>
+                    }
+                    {props.unit}
                 </button>
             </div>
         </nav>
