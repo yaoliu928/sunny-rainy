@@ -6,9 +6,12 @@ function Nav(props) {
                 <input 
                 value={props.inputValue} 
                 className="search-input" 
-                onChange={(props.handleInputChange)}
+                onChange={props.handleInputChange}
+                placeholder="AU cityname"
+
                 />
-                <button className="search-btn"><i className="fa fa-search"></i></button>
+                <button onClick={props.handleSearch}
+                className="search-btn"><i className="fa fa-search"></i></button>
 
                 <button className="temp-switch">
                     <i

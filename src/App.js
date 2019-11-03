@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from 'axios';
+
 import { format } from 'date-fns';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Footer from './components/Footer';
-
+import {getWeatherFor} from './utils/axios';
 import './App.css';
 
 class App extends React.Component {
@@ -22,26 +22,32 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //fetch data
-    axios.get('https://jr-weather-api.herokuapp.com/api/weather?cc=au&city=brisbane')
-      .then(response => {
-        console.log(response);
-        const data = response.data.data;
-        const cityName = data.city.name;
-        const current = data.current;
-        const forecasts = data.forecast.slice(0, 10).map(forecast => {
-          const date = new Date(forecast.time * 1000);
-          const day = format(date, 'EEE');
-          const time = format(date, 'HH:mm');
-          return {
-            day,
-            time,
-            high: forecast.maxCelsius,
-            low: forecast.minCelsius
-          };
-        });
-        this.setState({ cityName, current, forecasts });
-      });
+    getWeatherFor('brisbane')  
+    .then(this.updateWeather);
+  }
+
+  updateWeather = response => {
+    console.log(response);
+    const data = response.data.data;
+    const cityName = data.city.name;
+    const current = data.current;
+    const forecasts = data.forecast.slice(0, 10).map(forecast => {
+      const date = new Date(forecast.time * 1000);
+      const day = format(date, 'EEE');
+      const time = format(date, 'HH:mm');
+      return {
+        day,
+        time,
+        high: forecast.maxCelsius,
+        low: forecast.minCelsius
+      };
+    });
+    this.setState({ cityName, current, forecasts });
+  }
+
+  handleSearch = () => {
+    getWeatherFor(this.state.input)
+    .then(this.updateWeather);
   }
 
   changeLimit = (limit) => {
@@ -57,7 +63,8 @@ class App extends React.Component {
       <div className="weather-channel__container">
         <Header />
         <Nav inputValue={this.state.input} 
-        handleInputChange={(this.handleInputChange)} 
+        handleInputChange={this.handleInputChange} 
+        handleSearch={this.handleSearch}
         />
         <Main
           cityName={this.state.cityName}

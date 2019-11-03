@@ -9,7 +9,7 @@ function WeatherCondition(props){
           <div className="weather-condition__location">{props.cityName}</div>
           {//<div className="weather-condition__overview">Clear</div>
           }
-          <div className="weather-condition__temp">{props.current.minCelsius} c ~ {props.current.maxCelsius} c</div>
+          <div className="weather-condition__temp">{props.current.minCelsius} ℃ ~ {props.current.maxCelsius} ℃</div>
           <div className="weather-condition__desc">
             <div>
               <img src={umbrella} alt='umbrella'/>
