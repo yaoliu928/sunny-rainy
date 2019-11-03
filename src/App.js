@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { format } from 'date-fns';
-
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
@@ -37,17 +35,7 @@ toggleUnit =() => {
     const data = response.data.data;
     const cityName = data.city.name;
     const current = data.current;
-    const forecasts = data.forecast.slice(0, 10).map(forecast => {
-      const date = new Date(forecast.time * 1000);
-      const day = format(date, 'EEE');
-      const time = format(date, 'HH:mm');
-      return {
-        day,
-        time,
-        high: this.state.unit === '℃' ? forecast.maxCelsius : forecast.maxFahrenheit,
-        low: this.state.unit === '℃' ? forecast.minCelsius : forecast.minFahrenheit
-      };
-    });
+    const forecasts = data.forecast;
     this.setState({ cityName, current, forecasts });
   }
 
@@ -77,7 +65,7 @@ toggleUnit =() => {
         <Main
           cityName={this.state.cityName}
           current={this.state.current}
-          forecasts={this.state.forecasts.slice(0, this.state.limit)}
+          forecasts={this.state.forecasts}
           changeLimit={this.changeLimit}
           limit={this.state.limit}
           unit={this.state.unit}
