@@ -30,6 +30,9 @@ class App extends React.Component {
 toggleUnit =() => {
   const unit = this.state.unit === '℃' ? '℉':'℃';
   this.setState({unit});
+  console.log(this.state.unit);
+  this.updateWeather();
+  
 }
 
   updateWeather = response => {
