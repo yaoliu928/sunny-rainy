@@ -1,11 +1,19 @@
 import React from 'react';
 
+import BlockUi from 'react-block-ui';
+import { Loader, Types } from 'react-loaders';
+//import 'react-block-ui/style.css';
+import 'loaders.css/loaders.min.css';
+
+
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import {getWeatherFor} from './utils/axios';
 import './App.css';
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,13 +24,18 @@ class App extends React.Component {
       limit: 5,
       cityName: '',
       current: {},
-      input:''
+      input:'',
+      isLoading:true,
+      loaderType: 'ball-triangle-path'
     };
   }
 
   componentDidMount() {
+    this.setState({isLoading: true});
     getWeatherFor('brisbane')  
-    .then(this.updateWeather);
+    .then(this.updateWeather)
+    
+
   }
 
 toggleUnit =() => {
@@ -36,7 +49,7 @@ toggleUnit =() => {
     const cityName = data.city.name;
     const current = data.current;
     const forecasts = data.forecast;
-    this.setState({ cityName, current, forecasts });
+    this.setState({ cityName, current, forecasts,isLoading:false });
   }
 
   handleSearch = () => {
@@ -62,6 +75,7 @@ toggleUnit =() => {
         toggleUnit={this.toggleUnit}
         unit={this.state.unit}
         />
+        <BlockUi tag="div" blocking={this.state.isLoading} loader={<Loader active type={this.state.loaderType} color="#ee11fc"/>}>
         <Main
           cityName={this.state.cityName}
           current={this.state.current}
@@ -70,6 +84,7 @@ toggleUnit =() => {
           limit={this.state.limit}
           unit={this.state.unit}
         />
+        </BlockUi>
         <Footer />
       </div>
     );
