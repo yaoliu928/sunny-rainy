@@ -7,15 +7,15 @@ function Nav(props) {
                 value={props.inputValue} 
                 className="search-input" 
                 onChange={props.handleInputChange}
-                placeholder="AU cityname"
-                autofocus="true"
+                placeholder=" E.g. sydney"
+                autoFocus
                 />
                 <button onClick={props.handleSearch}
                 className="search-btn"><i className="fa fa-search"></i></button>
 
                 <button onClick={props.toggleUnit} className="temp-switch">
                     <i
-                        className="fa fa-thermometer-empty"
+                        className="fa fa-thermometer-empty temp-switch__icon"
                         aria-hidden="true"
                     ></i>
                     {//<sup>&deg;</sup>

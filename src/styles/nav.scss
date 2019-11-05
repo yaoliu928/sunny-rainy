@@ -1,0 +1,36 @@
+@import './variables.scss';
+nav {
+  border-bottom: solid 2px rgba(187, 187, 187, 0.32);
+  padding: 0.8rem 0 0.8rem 1rem;
+  display: flex;
+  .search-input {
+    font-size: 100%;
+    border-radius: 30px;
+    background-color: #ccc;
+    color: $white;
+    padding: 0.5rem;
+  }
+  .search-input::placeholder {
+    color: $white;
+  }
+  .search-btn {
+    margin-left: 5px;
+    border-radius: 50%;
+    background-color: $button;
+    cursor: pointer;
+    color: white;
+    height: 27px;
+  }
+  .temp-switch {
+    color: $white;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: $button;
+    font-size: 0.9rem;
+    margin-left: 35px;
+    padding: 5px 28px 5px 28px;
+    .temp-switch__icon {
+      padding-right: 5px;
+    }
+  }
+}

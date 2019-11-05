@@ -2,7 +2,6 @@ import React from 'react';
 
 import BlockUi from 'react-block-ui';
 import { Loader} from 'react-loaders';
-//import 'react-block-ui/style.css';
 import 'loaders.css/loaders.min.css';
 
 
@@ -11,7 +10,6 @@ import Nav from './components/Nav';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import { getWeatherFor } from './utils/axios';
-import './App.css';
 
 
 
@@ -44,7 +42,7 @@ class App extends React.Component {
   }
 
   updateWeather = response => {
-    console.log(response);
+    //console.log(response);
     const data = response.data.data;
     const cityName = data.city.name;
     const current = data.current;
