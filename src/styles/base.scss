@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "./variables.scss";
 * {
   box-sizing: border-box;
 }
@@ -20,8 +20,11 @@ button {
 .weather-channel__container {
   background: $white;
   height: 100vh;
-  position: relative;
   border-radius: 10px;
+}
+
+main {
+  position: relative;
 }
 
 @media only screen and (min-width: 800px) {

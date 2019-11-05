@@ -1,17 +1,9 @@
 import React from 'react';
-
-import BlockUi from 'react-block-ui';
-import { Loader} from 'react-loaders';
-import 'loaders.css/loaders.min.css';
-
-
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import { getWeatherFor } from './utils/axios';
-
-
 
 class App extends React.Component {
   constructor(props) {
@@ -77,12 +69,7 @@ class App extends React.Component {
           toggleUnit={this.toggleUnit}
           unit={this.state.unit}
         />
-        <BlockUi
-          tag="div"
-          blocking={this.state.isLoading}
-          loader={<Loader active type={this.state.loaderType}
-          color="#00ff9b" />}
-          >
+        
           <Main
             cityName={this.state.cityName}
             current={this.state.current}
@@ -90,8 +77,10 @@ class App extends React.Component {
             changeLimit={this.changeLimit}
             limit={this.state.limit}
             unit={this.state.unit}
+            isLoading={this.state.isLoading}
+            loaderType={this.state.loaderType}
           />
-        </BlockUi>
+       
         <Footer />
       </div>
     );
