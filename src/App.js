@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BlockUi from 'react-block-ui';
-import { Loader, Types } from 'react-loaders';
+import { Loader} from 'react-loaders';
 //import 'react-block-ui/style.css';
 import 'loaders.css/loaders.min.css';
 
