@@ -5,7 +5,7 @@ import WeatherForecast from './WeatherForecast';
 
 function Main(props) {
     return (
-        <main>
+        <main className="clearfix">
             <WeatherCondition 
             cityName={props.cityName}
             current={props.current}
