@@ -265,7 +265,7 @@ button.forecast__switch_1 {
   top: 0;
   bottom: 0;
   right: 40px;
-  border: 1px solid #999999;
+  border: 1px solid #d7d5d5;
   border-radius: 50%;
   transition: all 0.3s ease-in 0s;
 }

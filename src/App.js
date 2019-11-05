@@ -26,7 +26,7 @@ class App extends React.Component {
       current: {},
       input: '',
       isLoading: true,
-      loaderType: 'pacman'
+      loaderType: 'line-scale-pulse-out'
     };
   }
 
@@ -82,7 +82,7 @@ class App extends React.Component {
           tag="div"
           blocking={this.state.isLoading}
           loader={<Loader active type={this.state.loaderType}
-          color="#ee11fc" />}
+          color="#999999" />}
           >
           <Main
             cityName={this.state.cityName}
