@@ -3,7 +3,7 @@
 }
 
 body {
-  color: #bfc1c8;
+  color: #666;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
@@ -16,19 +16,18 @@ button {
 }
 
 .weather-channel__container {
-  background: #323544;
-  /* background-color: #262936; */
+  background: #ffffff;
   height: 100vh;
   position: relative;
+  border-radius: 10px;
+  
 }
 @media only screen and (min-width: 800px) {
   .weather-channel__container {
     max-width: 800px;
     margin: 3rem auto 0 auto;
-    border: 1px solid #666;
-    border-radius: 10px;
     height: auto;
-    box-shadow: 5px 5px 10px #999;
+    box-shadow: 5px 5px 10px #666;
   }
   .weather-channel__footer {
     /* background-color:  */
@@ -49,8 +48,11 @@ button {
 }
 
 header {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #00ff9b;
   padding: 0.5rem 0 0.5rem 1.5rem;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  
 }
 .header__logo {
   margin-right: 10px;
@@ -67,32 +69,33 @@ header {
 }
 
 nav {
-  /* background: #323544; */
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
+  border-bottom: solid 2px rgba(187, 187, 187, 0.32);
   padding: 0.8rem 0 0.8rem 1rem;
   display: flex;
 }
 .search-input {
   font-size: 100%;
   border-radius: 30px;
-  background-color: #1e202b;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  width: 180px;
+  background-color: #ccc;
+  color: #ffffff;
+  padding: 0.5rem;
+}
+.search-input::placeholder{
+  color:#ffffff;
 }
 .search-btn {
-  border: none;
-  background-color: transparent;
+  margin-left:5px;
+  border-radius: 50%;
+  background-color: rgb(0, 193, 223);
   cursor: pointer;
   color: white;
-  margin-left: -39px;
+  height: 27px;
 }
 .temp-switch {
   color: #fff;
   cursor: pointer;
   border-radius: 30px;
-  /* border: 2px solid #999999; */
-  background-color: #009ad8;
+  background-color: rgb(0, 193, 223);
   font-size: 0.9rem;
   margin-left: 35px;
   padding: 5px 28px 5px 28px;
@@ -131,9 +134,11 @@ nav {
 }
 .weather-condition__desc .citem {
   padding: 0 0 3px 5px;
+  color: #666;
+  font-size: 1rem;
 }
 .weather-condition__temp {
-  color: #fff;
+  color: #666;
   margin-top: 0.75rem;
   text-align: center;
   font-size: 2rem;
@@ -146,10 +151,8 @@ nav {
   margin: 1rem 0;
 }
 .forecast__switch button {
-  border-top: 1px solid #999;
-  border-bottom: 1px solid #999;
-  border-left: 1px solid #999;
-  background-color: #eee;
+  width: 30%;
+  background-color: #ddd;
   color: #999;
   font-size: 14px;
   cursor: pointer;
@@ -157,7 +160,7 @@ nav {
   padding: 3px 18px;
 }
 .forecast__switch button.switch-active {
-  background-color: #009ad8;
+  background-color: rgb(0, 193, 223);
   color: #fff;
 }
 button.forecast__switch_0 {
@@ -190,16 +193,17 @@ button.forecast__switch_1 {
 .weather-forecast__low {
   flex: 0.3;
   text-align: right;
-  color: #ffffff;
+  color: #666;
 }
 
 .weather-channel__footer {
-  background-color: rgba(0, 0, 0, 0.1);
-  /* margin-top: 30px; */
+  background-color: #00ff9b;
+  border-radius: 0 0 10px 10px; 
 }
 .weather-channel__footer p {
   margin: 3px auto;
   text-align: center;
+  color:#ffffff;
 }
 
 .onoffswitch {
@@ -219,7 +223,7 @@ button.forecast__switch_1 {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid #999999;
+  border: 1px solid #666999;
   border-radius: 50px;
 }
 .onoffswitch-inner {
@@ -245,14 +249,14 @@ button.forecast__switch_1 {
 .onoffswitch-inner:before {
   content: "ON";
   padding-left: 10px;
-  background-color: #009ad8;
+  background-color: #003eff;
   color: #ffffff;
 }
 .onoffswitch-inner:after {
   content: "OFF";
   padding-right: 10px;
   background-color: #eeeeee;
-  color: #999999;
+  color: #666999;
   text-align: right;
 }
 .onoffswitch-switch {

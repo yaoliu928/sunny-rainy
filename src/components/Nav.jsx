@@ -8,6 +8,7 @@ function Nav(props) {
                 className="search-input" 
                 onChange={props.handleInputChange}
                 placeholder="AU cityname"
+                autofocus="true"
                 />
                 <button onClick={props.handleSearch}
                 className="search-btn"><i className="fa fa-search"></i></button>

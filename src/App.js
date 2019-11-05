@@ -56,6 +56,7 @@ class App extends React.Component {
   }
 
   handleSearch = () => {
+    this.setState({ isLoading: true });
     getWeatherFor(this.state.input)
       .then(this.updateWeather);
   }
@@ -82,7 +83,7 @@ class App extends React.Component {
           tag="div"
           blocking={this.state.isLoading}
           loader={<Loader active type={this.state.loaderType}
-          color="#999999" />}
+          color="#00ff9b" />}
           >
           <Main
             cityName={this.state.cityName}
