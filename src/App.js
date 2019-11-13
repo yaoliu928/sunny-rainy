@@ -1,31 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
+import Error from './components/Error';
 import Footer from './components/Footer';
 import { getWeatherFor } from './utils/axios';
+import { fetchDataThunkAction } from './redux/weatherAction';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       unit: '℃',
-      forecasts: [],
+      //forecasts: [],
       //limit: 5,
-      cityName: '',
-      current: {},
+      //cityName: '',
+      //current: {},
       input: '',
-      isLoading: true,
-      loaderType: 'line-scale-pulse-out'
+      //isLoading: true,
+      //loaderType: 'line-scale-pulse-out'
     };
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
-    getWeatherFor('brisbane')
-      .then(this.updateWeather)
-
-
+    this.props.fetchWeatherData('brisbane');
   }
 
   toggleUnit = () => {
@@ -33,17 +33,15 @@ class App extends React.Component {
     this.setState({ unit });
   }
 
-  updateWeather = response => {
-    //console.log(response);
-    const data = response.data.data;
-    const cityName = data.city.name;
-    const current = data.current;
-    const forecasts = data.forecast;
-    this.setState({
-      cityName, current, forecasts,
-      isLoading:false 
-    });
-  }
+  // updateWeather = response => {
+  //   //console.log(response);
+  //   const data = response.data.data;
+
+  //   this.setState({
+  //     cityName, current, forecasts,
+  //     isLoading:false 
+  //   });
+  // }
 
   handleSearch = () => {
     this.setState({ isLoading: true });
@@ -59,6 +57,11 @@ class App extends React.Component {
     this.setState({ input: event.target.value });
   }
 
+  renderMain =()=>{
+    if(this.props.hasError)return <Error />;
+    return <Main />;
+  }
+
   render() {
     return (
       <div className="weather-channel__container">
@@ -69,22 +72,36 @@ class App extends React.Component {
           toggleUnit={this.toggleUnit}
           unit={this.state.unit}
         />
-        
-          <Main
-            cityName={this.state.cityName}
-            current={this.state.current}
-            forecasts={this.state.forecasts}
-            //changeLimit={this.changeLimit}
-            //limit={this.state.limit}
-            unit={this.state.unit}
-            isLoading={this.state.isLoading}
-            loaderType={this.state.loaderType}
-          />
-       
+        {
+          this.props.isLoading ?
+
+            <Main
+              // cityName={this.state.cityName}
+              //current={this.state.current}
+              //forecasts={this.state.forecasts}
+              //changeLimit={this.changeLimit}
+              //limit={this.state.limit}
+              unit={this.state.unit}
+            //isLoading={this.state.isLoading}
+            //loaderType={this.state.loaderType}
+            />
+            : this.renderMain()
+        }
+
         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  hasError: !!state.weather.error,
+  isLoading: state.weather.isLoading,
+
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchWeatherData: (city) => dispatch(fetchDataThunkAction(city)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

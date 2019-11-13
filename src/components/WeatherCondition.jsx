@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import umbrella from '../assets/icons/icon-umbrella.png';
 import wind from '../assets/icons/icon-wind.png';
 import compass from '../assets/icons/icon-compass.png';
@@ -37,4 +39,10 @@ function WeatherCondition(props) {
     </section>
   )
 }
-export default WeatherCondition;
+
+const mapStateToProps = state => ({
+    cityName:state.weather.cityName,
+    current:state.weather.current
+  })
+
+export default connect(mapStateToProps)(WeatherCondition);
