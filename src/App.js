@@ -1,17 +1,81 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {changeLimitAction} from './actions/changeLimit';
+
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import { getWeatherFor } from './utils/axios';
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       unit: '℃',
-      forecasts: [],
-      limit: 5,
+      forecasts: [
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "13:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "14:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "15:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "16:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "17:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "13:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "14:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "15:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "16:00"
+        },
+        {
+            day: "Mon",
+            high: "19c",
+            low: "10c",
+            time: "17:00"
+        }
+    ],
+      //limit: 5,
       cityName: '',
       current: {},
       input: '',
@@ -24,8 +88,6 @@ class App extends React.Component {
     this.setState({ isLoading: true });
     getWeatherFor('brisbane')
       .then(this.updateWeather)
-
-
   }
 
   toggleUnit = () => {
@@ -38,9 +100,9 @@ class App extends React.Component {
     const data = response.data.data;
     const cityName = data.city.name;
     const current = data.current;
-    const forecasts = data.forecast;
+    
     this.setState({
-      cityName, current, forecasts,
+      cityName, current, 
       isLoading:false 
     });
   }
@@ -52,7 +114,7 @@ class App extends React.Component {
   }
 
   changeLimit = (limit) => {
-    this.setState({ limit });
+    this.props.handleLimit(limit);
   }
 
   handleInputChange = (event) => {
@@ -79,12 +141,22 @@ class App extends React.Component {
             unit={this.state.unit}
             isLoading={this.state.isLoading}
             loaderType={this.state.loaderType}
-          />
-       
+          />      
         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  limit: state.forecast.limit,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleLimit: limit => dispatch(changeLimitAction(limit)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+

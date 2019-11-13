@@ -1,11 +1,14 @@
 import React from 'react';
-import { format } from 'date-fns';
+
 import ForecastRow from './ForecastRow';
 
-class WeatherForecast extends React.Component {
+
+export class WeatherForecast extends React.Component {
+
+
 
     render() {
-        const { limit, forecasts,unit } = this.props;
+        const { limit,forecasts} = this.props;
         return (
             <section className="weather-forecast">
                 <div className="forecast__switch">
@@ -22,24 +25,19 @@ class WeatherForecast extends React.Component {
                     </button>
                 </div>
                 {forecasts.slice(0, limit).map(forecast => {
-                    const date = new Date(forecast.time * 1000);
-                    const day = format(date, 'EEE');
-                    const time = format(date, 'HH:mm');
+                    
                     return (
                         <ForecastRow
-                            key={day + time}
-                            day={day}
-                            high={unit==='℃'?forecast.maxCelsius:forecast.maxFahrenheit}
-                            low={unit==='℃'?forecast.minCelsius:forecast.minFahrenheit}
-                            time={time}
-                            unit={unit}
-
+                            key={forecast.day + forecast.time}
+                            day={forecast.day}
+                            high={forecast.high}
+                            low={forecast.low}
+                            time={forecast.time}
                         />)
-
                 })}
             </section>
         );
     }
-
 }
+
 export default WeatherForecast;
