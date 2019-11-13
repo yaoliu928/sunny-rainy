@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       unit: '℃',
       forecasts: [],
-      limit: 5,
+      //limit: 5,
       cityName: '',
       current: {},
       input: '',
@@ -51,9 +51,9 @@ class App extends React.Component {
       .then(this.updateWeather);
   }
 
-  changeLimit = (limit) => {
-    this.setState({ limit });
-  }
+  // changeLimit = (limit) => {
+  //   this.setState({ limit });
+  // }
 
   handleInputChange = (event) => {
     this.setState({ input: event.target.value });
@@ -74,8 +74,8 @@ class App extends React.Component {
             cityName={this.state.cityName}
             current={this.state.current}
             forecasts={this.state.forecasts}
-            changeLimit={this.changeLimit}
-            limit={this.state.limit}
+            //changeLimit={this.changeLimit}
+            //limit={this.state.limit}
             unit={this.state.unit}
             isLoading={this.state.isLoading}
             loaderType={this.state.loaderType}
