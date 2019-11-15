@@ -6,19 +6,19 @@ import Nav from './components/Nav';
 import Main from './components/Main';
 import Error from './components/Error';
 import Footer from './components/Footer';
-import { getWeatherFor } from './utils/axios';
+// import { getWeatherFor } from './utils/axios';
 import { fetchDataThunkAction } from './redux/weatherAction';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      unit: '℃',
+      //unit: '℃',
       //forecasts: [],
       //limit: 5,
       //cityName: '',
       //current: {},
-      input: '',
+      //input: '',
       //isLoading: true,
       //loaderType: 'line-scale-pulse-out'
     };
@@ -28,10 +28,10 @@ class App extends React.Component {
     this.props.fetchWeatherData('brisbane');
   }
 
-  toggleUnit = () => {
-    const unit = this.state.unit === '℃' ? '℉' : '℃';
-    this.setState({ unit });
-  }
+  // toggleUnit = () => {
+  //   const unit = this.state.unit === '℃' ? '℉' : '℃';
+  //   this.setState({ unit });
+  // }
 
   // updateWeather = response => {
   //   //console.log(response);
@@ -44,21 +44,19 @@ class App extends React.Component {
   // }
 
   handleSearch = () => {
-    this.setState({ isLoading: true });
-    getWeatherFor(this.state.input)
-      .then(this.updateWeather);
+    this.props.fetchWeatherData(this.props.input);
   }
 
   // changeLimit = (limit) => {
   //   this.setState({ limit });
   // }
 
-  handleInputChange = (event) => {
-    this.setState({ input: event.target.value });
-  }
+  // handleInputChange = (event) => {
+  //   this.setState({ input: event.target.value });
+  // }
 
-  renderMain =()=>{
-    if(this.props.hasError)return <Error />;
+  renderMain = () => {
+    if (this.props.hasError) return <Error />;
     return <Main />;
   }
 
@@ -69,19 +67,19 @@ class App extends React.Component {
         <Nav inputValue={this.state.input}
           handleInputChange={this.handleInputChange}
           handleSearch={this.handleSearch}
-          toggleUnit={this.toggleUnit}
-          unit={this.state.unit}
+        //toggleUnit={this.toggleUnit}
+        //unit={this.state.unit}
         />
         {
           this.props.isLoading ?
 
             <Main
-              // cityName={this.state.cityName}
-              //current={this.state.current}
-              //forecasts={this.state.forecasts}
-              //changeLimit={this.changeLimit}
-              //limit={this.state.limit}
-              unit={this.state.unit}
+            // cityName={this.state.cityName}
+            //current={this.state.current}
+            //forecasts={this.state.forecasts}
+            //changeLimit={this.changeLimit}
+            //limit={this.state.limit}
+            //unit={this.state.unit}
             //isLoading={this.state.isLoading}
             //loaderType={this.state.loaderType}
             />
@@ -97,6 +95,7 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   hasError: !!state.weather.error,
   isLoading: state.weather.isLoading,
+
 
 })
 

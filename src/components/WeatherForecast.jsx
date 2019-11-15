@@ -46,7 +46,8 @@ class WeatherForecast extends React.Component {
 
 const mapStateToProps = state => ({
     limit: state.weather.limit,
-    forecasts: state.weather.forecasts
+    forecasts: state.weather.forecasts,
+    unit:state.weather.unit
 });
 
 const mapDispatchToProps = dispatch => ({

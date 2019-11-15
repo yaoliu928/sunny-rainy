@@ -2,7 +2,10 @@ import {
     CHANGE_LIMIT,
     FETCH_DATA_SUCCESS,
     FETCH_DATA,
-    FETCH_DATA_FAILURE
+    FETCH_DATA_FAILURE,
+    CHANGE_UNIT,
+    HANDLE_INPUT,
+
 } from './weatherAction';
 
 const initialState = {
@@ -11,7 +14,9 @@ const initialState = {
     current: {},
     forecasts: [],
     isLoading: false,
-    error:null,
+    error: null,
+    unit: '℃',
+    input: ''
 };
 const weatherReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -37,12 +42,26 @@ const weatherReducer = (state = initialState, action) => {
                 forecasts
             }
 
-            case FETCH_DATA_FAILURE:
-                return{
-                    ...state,
-                    error:action.err,
-                    isLoading: false
-                }
+        case FETCH_DATA_FAILURE:
+            return {
+                ...state,
+                error: action.err,
+                isLoading: false
+            }
+
+        case CHANGE_UNIT:
+            return {
+                ...state,
+                unit: state.unit === '℃' ? '℉' : '℃'
+            }
+
+        case HANDLE_INPUT:
+            return {
+                ...state,
+                input: action.e.target.value
+            }
+
+
 
         default:
             return state;
