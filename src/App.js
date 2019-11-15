@@ -43,9 +43,9 @@ class App extends React.Component {
   //   });
   // }
 
-  handleSearch = () => {
-    this.props.fetchWeatherData(this.props.input);
-  }
+  // handleSearch = () => {
+  //   this.props.fetchWeatherData(this.props.input);
+  // }
 
   // changeLimit = (limit) => {
   //   this.setState({ limit });

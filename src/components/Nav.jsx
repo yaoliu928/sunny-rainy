@@ -4,6 +4,16 @@ import { changeUnitAction, handleInputAction, fetchDataThunkAction } from '../re
 
 import React from 'react';
 function Nav(props) {
+
+    const handleSearch = () => {
+        props.fetchWeatherData(props.input);
+    }
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+    }
+
     return (
         <nav>
             <div >
@@ -12,9 +22,10 @@ function Nav(props) {
                     className="search-input"
                     onChange={props.handleInputChange}
                     placeholder=" E.g. sydney"
+                    onKeyPress={handleKeyPress}
                     autoFocus
                 />
-                <button onClick={() => props.handleSearch(props.inputValue)}
+                <button onClick={handleSearch}
                     className="search-btn"><i className="fa fa-search"></i></button>
 
                 <button onClick={props.toggleUnit} className="temp-switch">
@@ -32,13 +43,13 @@ function Nav(props) {
 
 const mapStateToProps = state => ({
     unit: state.weather.unit,
-    inputValue: state.weather.input
+    input: state.weather.input
 })
 
 const mapDispatchToProps = dispatch => ({
     toggleUnit: () => dispatch(changeUnitAction()),
     handleInputChange: (e) => dispatch(handleInputAction(e)),
-    handleSearch: (city) => dispatch(fetchDataThunkAction(city))
+    fetchWeatherData: (city) => dispatch(fetchDataThunkAction(city))
 
 })
 
