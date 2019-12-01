@@ -24,11 +24,7 @@ class App extends React.Component {
     return (
       <div className="weather-channel__container">
         <Header />
-        <Nav inputValue={this.state.input}
-          handleInputChange={this.handleInputChange}
-          handleSearch={this.handleSearch}
-
-        />
+        <Nav />
         {
           this.props.isLoading ?
 
