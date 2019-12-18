@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { format } from 'date-fns';
 import ForecastRow from './ForecastRow';
-import { changeLimitAction } from '../redux/weatherAction';
+import { changeLimitAction } from '../actions/weatherAction';
 
 const WeatherForecast = ({ changeLimit, limit, forecasts, unit }) => {
     return (

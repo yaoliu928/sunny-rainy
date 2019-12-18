@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeUnitAction, handleInputAction, fetchDataThunkAction } from '../redux/weatherAction';
+import { changeUnitAction, handleInputAction, fetchDataThunkAction } from '../actions/weatherAction';
 
 const Nav = ({fetchWeatherData,input, inputValue, handleInputChange,toggleUnit,unit}) => {
     const handleSearch = () => {

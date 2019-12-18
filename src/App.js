@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 import Main from './components/Main';
 import Error from './components/Error';
 import Footer from './components/Footer';
-import { fetchDataThunkAction } from './redux/weatherAction';
+import { fetchDataThunkAction } from './actions/weatherAction';
 
 class App extends React.Component {
 

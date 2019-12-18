@@ -5,7 +5,7 @@ import {
     FETCH_DATA_FAILURE,
     CHANGE_UNIT,
     HANDLE_INPUT,
-} from './weatherAction';
+} from '../actions/weatherAction';
 
 const initialState = {
     limit: 5,
