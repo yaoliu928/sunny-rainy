@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Footer() {
+const Footer = () => {
     return (
         <footer className="weather-channel__footer">
             <p>Powered by React</p>

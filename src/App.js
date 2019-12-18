@@ -6,13 +6,12 @@ import Nav from './components/Nav';
 import Main from './components/Main';
 import Error from './components/Error';
 import Footer from './components/Footer';
-// import { getWeatherFor } from './utils/axios';
 import { fetchDataThunkAction } from './redux/weatherAction';
 
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.fetchWeatherData('brisbane');
+    this.props.fetchWeatherData('gold coast');
   }
 
   renderMain = () => {
@@ -25,15 +24,10 @@ class App extends React.Component {
       <div className="weather-channel__container">
         <Header />
         <Nav />
-        {
-          this.props.isLoading ?
-
-            <Main
-
-            />
+          { this.props.isLoading
+            ? <Main />
             : this.renderMain()
-        }
-
+          }
         <Footer />
       </div>
     );
@@ -43,8 +37,6 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   hasError: !!state.weather.error,
   isLoading: state.weather.isLoading,
-
-
 })
 
 const mapDispatchToProps = dispatch => ({

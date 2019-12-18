@@ -5,7 +5,6 @@ import {
     FETCH_DATA_FAILURE,
     CHANGE_UNIT,
     HANDLE_INPUT,
-
 } from './weatherAction';
 
 const initialState = {
@@ -41,28 +40,22 @@ const weatherReducer = (state = initialState, action) => {
                 current,
                 forecasts
             }
-
         case FETCH_DATA_FAILURE:
             return {
                 ...state,
                 error: action.err,
                 isLoading: false
             }
-
         case CHANGE_UNIT:
             return {
                 ...state,
                 unit: state.unit === '℃' ? '℉' : '℃'
             }
-
         case HANDLE_INPUT:
             return {
                 ...state,
                 input: action.e.target.value
-            }
-
-
-
+            }        
         default:
             return state;
     }

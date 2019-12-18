@@ -7,7 +7,6 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const CHANGE_UNIT = 'CHANGE_UNIT';
 export const HANDLE_INPUT = 'HANDLE_INPUT';
 
-
 export const handleInputAction = (e) => ({
     e,
     type: HANDLE_INPUT
@@ -39,10 +38,10 @@ export const fetchDataFailure = err => ({
 
 export const fetchDataThunkAction = (city) => (dispatch, getState) => {
     dispatch(fetchData());
-    getWeatherFor(city).then(data => {
-        dispatch(fetchDataSuccess(data));
-    }).catch(err => {
-        dispatch(fetchDataFailure(err));
-    });
+    getWeatherFor(city)
+        .then(data => {
+        dispatch(fetchDataSuccess(data));})
+        .catch(err => {
+        dispatch(fetchDataFailure(err));});
 };
 

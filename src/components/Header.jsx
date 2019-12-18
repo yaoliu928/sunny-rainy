@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../assets/icons/logo.svg';
 
-function Header() {
+const Header = () => {
   return (
     <header>
       <img className="header__logo" src={logo} alt="logo" />

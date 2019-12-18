@@ -1,12 +1,10 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { changeUnitAction, handleInputAction, fetchDataThunkAction } from '../redux/weatherAction';
 
-
-import React from 'react';
-function Nav(props) {
-
+const Nav = ({fetchWeatherData,input, inputValue, handleInputChange,toggleUnit,unit}) => {
     const handleSearch = () => {
-        props.fetchWeatherData(props.input);
+        fetchWeatherData(input);
     }
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
@@ -18,23 +16,21 @@ function Nav(props) {
         <nav>
             <div >
                 <input
-                    value={props.inputValue}
+                    value={inputValue}
                     className="search-input"
-                    onChange={props.handleInputChange}
+                    onChange={handleInputChange}
                     placeholder=" E.g. sydney"
                     onKeyPress={handleKeyPress}
                     autoFocus
                 />
                 <button onClick={handleSearch}
                     className="search-btn"><i className="fa fa-search"></i></button>
-
-                <button onClick={props.toggleUnit} className="temp-switch">
+                <button onClick={toggleUnit} className="temp-switch">
                     <i
                         className="fa fa-thermometer-empty temp-switch__icon"
                         aria-hidden="true"
                     ></i>
-
-                    {props.unit}
+                    {unit}
                 </button>
             </div>
         </nav>

@@ -5,20 +5,19 @@ import umbrella from '../assets/icons/icon-umbrella.png';
 import wind from '../assets/icons/icon-wind.png';
 import compass from '../assets/icons/icon-compass.png';
 
-function WeatherCondition(props) {
-  const {
-    cityName,
-    current: {
-      maxCelsius,
-      minCelsius,
-      maxFahrenheit,
-      minFahrenheit,
-      humidity,
-      windSpeed,
-      windDirection
-    },
-    unit
-  } = props;
+const WeatherCondition = ({
+  cityName,
+  current: {
+    maxCelsius,
+    minCelsius,
+    maxFahrenheit,
+    minFahrenheit,
+    humidity,
+    windSpeed,
+    windDirection
+  },
+  unit
+}) => {
   return (
     <section className="weather-condition">
       <div className="weather-condition__location">{cityName}</div>
@@ -41,9 +40,9 @@ function WeatherCondition(props) {
 }
 
 const mapStateToProps = state => ({
-    cityName:state.weather.cityName,
-    current:state.weather.current,
-    unit:state.weather.unit
-  })
+  cityName: state.weather.cityName,
+  current: state.weather.current,
+  unit: state.weather.unit
+})
 
 export default connect(mapStateToProps)(WeatherCondition);
