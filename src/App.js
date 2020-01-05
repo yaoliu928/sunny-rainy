@@ -11,7 +11,7 @@ import { fetchDataThunkAction } from './actions/weatherAction';
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.fetchWeatherData('gold coast');
+    this.props.fetchWeatherData('brisbane');
   }
 
   renderMain = () => {
