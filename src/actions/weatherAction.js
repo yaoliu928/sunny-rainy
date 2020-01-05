@@ -36,7 +36,7 @@ export const fetchDataFailure = err => ({
     type: FETCH_DATA_FAILURE,
 });
 
-export const fetchDataThunkAction = (city) => (dispatch, getState) => {
+export const fetchDataThunkAction = city => dispatch => {
     dispatch(fetchData());
     getWeatherFor(city)
         .then(data => {

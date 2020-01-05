@@ -28,6 +28,7 @@ const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
+                error: null,
             }
         case FETCH_DATA_SUCCESS:
             const cityName = action.data.city.name;
@@ -38,7 +39,7 @@ const weatherReducer = (state = initialState, action) => {
                 isLoading: false,
                 cityName,
                 current,
-                forecasts
+                forecasts              
             }
         case FETCH_DATA_FAILURE:
             return {
